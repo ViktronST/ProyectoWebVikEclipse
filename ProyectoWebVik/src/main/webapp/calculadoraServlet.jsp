@@ -20,9 +20,22 @@
         <input type="submit" value="Enviar">
     </form>
     
-    <% String resultadoStr = request.getParameter("resultado"); %> 
+<%--     <%
+    	String resultadoStr = request.getParameter("resultado"); 
+    	if (resultadoStr != null) {
+   	%> 
+    	<p>Resultado: <%= resultadoStr %></p>
+    <%
+    	}
+    %> --%>
     
-    <p>Resultado: <%= resultadoStr %></p>
+    <%
+    	if (request.getParameter("mensaje") != null) {
+   	%>    
+    	<p><%= request.getParameter("mensaje") %></p>
+    <%
+    	}
+    %>
 
 <%--   <%
         String num1Str = request.getParameter("num1");
