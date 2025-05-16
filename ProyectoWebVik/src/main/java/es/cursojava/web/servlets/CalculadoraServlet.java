@@ -37,8 +37,12 @@ public class CalculadoraServlet extends HttpServlet{
 		
 		System.out.println(dto.getResultado());
 		
-		resp.sendRedirect("calculadoraServlet.jsp?mensaje=" + dto.getMensaje() + dto.getResultado());
+//		resp.sendRedirect("calculadoraServlet.jsp?mensaje=" + dto.getMensaje() + dto.getResultado());
 		
+		req.setAttribute("dto", dto);
+		
+		req.getRequestDispatcher("calculadoraServlet.jsp?mensaje=" + dto.getMensaje() + dto.getResultado()).forward(req, resp);
+				
 //		if (numero1==null || numero2==null || operacion==null) {
 //			resp.getWriter().append("<h1>ha habido un error</h1>");
 //		} else {

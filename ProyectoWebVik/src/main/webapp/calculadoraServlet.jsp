@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="es.cursojava.web.dto.CalculadoraDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +33,18 @@
     	if (request.getParameter("mensaje") != null) {
    	%>    
     	<p><%= request.getParameter("mensaje") %></p>
+    <%
+    	}
+    %>
+    
+    <!-- Esta parte decódigo nunca llegará a ver la luza, ya que la petición inicial con los parámetros se ha borrado y se ha creado una nueva
+    petición al volver a enviarlo. Pero con el siguiente código se continua con la peticion sin borrarla: 
+    req.getRequestDispatcher("calculadoraServlet.jsp?mensaje=" + dto.getMensaje() + dto.getResultado()).forward(req, resp);-->
+    <%
+    	CalculadoraDTO calcDTO = (CalculadoraDTO) request.getAttribute("dto");
+    	if (calcDTO != null) {
+    %> 
+    	<p>Tengo el DTO!!!</p>
     <%
     	}
     %>
